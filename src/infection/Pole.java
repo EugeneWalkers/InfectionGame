@@ -48,7 +48,7 @@ class Pole extends JFrame{
 	private int turn = 0;
 	private Vector<Color> colors = null;
 	public Pole(int ww, int hh, int n){
-		super("Инфекция");
+		super("РРЅС„РµРєС†РёСЏ");
 		colors = new Vector<>();
 		colors.add(new Color(0, 255, 0));
 		colors.add(new Color(255, 0, 0));
@@ -300,7 +300,7 @@ class Pole extends JFrame{
 	}
 	private void endGame(){
 		teamGo = 0;
-		JFrame jf = new JFrame("Результаты");
+		JFrame jf = new JFrame("Р РµР·СѓР»СЊС‚Р°С‚С‹");
 		jf.setIconImage(Toolkit.getDefaultToolkit().getImage("images/res.png"));
 		jf.setSize(300, 300);
 		Vector<Vector<String>>res = new Vector<>();
@@ -315,7 +315,7 @@ class Pole extends JFrame{
 		headers.add("Score");
 		JTable tabl = new JTable(res, headers);
 		tabl.getTableHeader().setEnabled(false);
-		JButton ng = new JButton("Новая игра");
+		JButton ng = new JButton("РќРѕРІР°СЏ РёРіСЂР°");
 		ng.addActionListener(new ActionListener(){
 
 			@Override
@@ -338,7 +338,7 @@ class Pole extends JFrame{
 	}
 	private void setKey(){
 		map.addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent arg0) { // Кликнули	
+			public void mouseClicked(MouseEvent arg0) { // РљР»РёРєРЅСѓР»Рё
 				for (int i=0; i<pole.size(); i++){
 					for (int j=pole.get(0).size()-1; j>-1; j--){
 						if (
@@ -448,13 +448,13 @@ class Pole extends JFrame{
 	}
 	private void setMenu(){
 		JMenuBar menuBar = new JMenuBar();
-		JMenu game = new JMenu("Игра");
-		JMenuItem newGame = new JMenuItem("Новая игра");
-		JMenuItem options = new JMenuItem("Параметры");
-		JMenuItem exit = new JMenuItem("Выход");
-		JMenu help = new JMenu("Справка");
-		JMenuItem howPlay = new JMenuItem("Как играть?");
-		JMenuItem helper = new JMenuItem("О программе");
+		JMenu game = new JMenu("РРіСЂР°");
+		JMenuItem newGame = new JMenuItem("РќРѕРІР°СЏ РёРіСЂР°");
+		JMenuItem options = new JMenuItem("РќР°СЃС‚СЂРѕР№РєРё");
+		JMenuItem exit = new JMenuItem("Р’С‹С…РѕРґ");
+		JMenu help = new JMenu("РЎРїСЂР°РІРєР°");
+		JMenuItem howPlay = new JMenuItem("РљР°Рє РёРіСЂР°С‚СЊ?");
+		JMenuItem helper = new JMenuItem("Рћ РїСЂРѕРіСЂР°РјРјРµ");
 		newGame.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -464,9 +464,9 @@ class Pole extends JFrame{
 		});
 		options.addActionListener(new ActionListener(){
 			class Options{
-				JButton ok = new JButton("Ок");
+				JButton ok = new JButton("РћРє");
 				public Options(){
-					JFrame jf = new JFrame("Параметры");
+					JFrame jf = new JFrame("РџР°СЂР°РјРµС‚СЂС‹");
 					jf.setIconImage(Toolkit.getDefaultToolkit().getImage("images/param.png"));
 					Vector<Integer>v = new Vector<>();
 					Vector<Integer> t = new Vector<>();
@@ -480,8 +480,8 @@ class Pole extends JFrame{
 					JComboBox<Integer> hh = new JComboBox<>(v);
 					JComboBox<Integer> teams = new JComboBox<>(t);
 					jf.setLayout(new GridLayout(5, 2, 50, 5));
-					jf.add(new JLabel("Введите количество столбцов:"));
-					jf.add(new JLabel("Введите количество строк:"));
+					jf.add(new JLabel("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚РѕР»Р±С†РѕРІ:"));
+					jf.add(new JLabel("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє:"));
 					jf.add(ww);
 					jf.add(hh);
 					
@@ -498,7 +498,7 @@ class Pole extends JFrame{
 						
 					});
 					jf.setSize(450, 200);
-					jf.add(new JLabel("Введите количество команд:"));
+					jf.add(new JLabel("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РєРѕРјР°РЅРґ:"));
 					jf.add(new JPanel());
 					jf.add(teams);
 					jf.add(ok);
@@ -522,36 +522,36 @@ class Pole extends JFrame{
 		});
 		howPlay.addActionListener(new ActionListener(){
 			class HowPlay{
-				JFrame jf = new JFrame("Как играть?");
+				JFrame jf = new JFrame("РљР°Рє РёРіСЂР°С‚СЊ?");
 				public HowPlay(){
 					StringBuilder st = new StringBuilder(new String());
-					st.append("<html><p>Инфекция - это игра для нескольких человек (от 2 до 4).</p>");
-					st.append("<p>Игроки ходят по очереди. Цель каждого игрока - захватить поле шарами "
-							+ "своего цвета.</p>");
-					st.append("<p>Нажмите <b color=\"red\">стрелку влево</b>, чтобы двигать указатель влево,"
-							+ " <b color=\"red\">стрелку вправо</b>, чтобы двигать указатель вправо, "
-							+ "<b color=\"red\">стрелку вверх</b>, чтобы двигать указатель вверх, "
-							+ "и <b color=\"red\">стрелку вниз</b>, чтобы двигать указатель вниз."
-							+ " Чтобы выделить ячейку достаточно также <b color=\"blue\">кликнуть"
-							+ " по ней мышью.</b></p>");
-					st.append("<p>Для выбора шарика нажмите <b color=\"red\">пробел</b> либо <b color=\"blue\">кликните по выделенной клетке мышью</b>.</p>");
-					st.append("<p>После того, как Вы выбрали шарик, его можно переместить на другую позицию, "
-							+ "при этом:</p>");
-					st.append("<p>1. При выборе соседней по горизонтали, вертикали либо диагонали клетке шарик "
-							+ "размножается, то есть на выбранной клетке создается еще один той команды, "
-							+ "которая делала ход.</p>");
-					st.append("<p>2. Шарик может перепрыгнуть через 1 клетку по горизонтали, вертикали либо"
-							+ " диагонали, либо пойти аналогично ходу коня в шахматах, однако при "
-							+ "этом размножение происходить не будет - шарик только переместится.</p>");
-					st.append("<p>3. Переместившись, шарик обращает все шарики другого цвета вокруг себя,"
-							+ " то есть все шарики другого цвета на 1 клетку по горизонтали,"
-							+ " вертикали либо диагонали становятся шариками той команды,"
-							+ " которая совершила ход.</p>");
-					st.append("<p>Игра заканчивается в трех случаях:</p>");
-					st.append("<p>1. Все клетки поля заняты шариками.</p>");
-					st.append("<p>2. На поле остались шарики только одного игрока.</p>");
-					st.append("<p>3. Походить может только один игрок.</p>");
-					st.append("<p>Выигрывает тот, у кого в конце игры осталось больше шариков. Удачной игры!</p></html>");
+					st.append("<html><p>РРЅС„РµРєС†РёСЏ - СЌС‚Рѕ РёРіСЂР° РґР»СЏ РЅРµСЃРєРѕР»СЊРєРёС… С‡РµР»РѕРІРµРє (РѕС‚ 2 РґРѕ 4).</p>");
+					st.append("<p>РРіСЂРѕРєРё С…РѕРґСЏС‚ РїРѕ РѕС‡РµСЂРµРґРё. Р¦РµР»СЊ РєР°Р¶РґРѕРіРѕ РёРіСЂРѕРєР° - Р·Р°С…РІР°С‚РёС‚СЊ РїРѕР»Рµ С€Р°СЂР°РјРё "
+							+ "СЃРІРѕРµРіРѕ С†РІРµС‚Р°.</p>");
+					st.append("<p>РќР°Р¶РјРёС‚Рµ <b color=\"red\">СЃС‚СЂРµР»РєСѓ РІР»РµРІРѕ</b>, С‡С‚РѕР±С‹ РґРІРёРіР°С‚СЊ СѓРєР°Р·Р°С‚РµР»СЊ РІР»РµРІРѕ,"
+							+ " <b color=\"red\">СЃС‚СЂРµР»РєСѓ РІРїСЂР°РІРѕ</b>, С‡С‚РѕР±С‹ РґРІРёРіР°С‚СЊ СѓРєР°Р·Р°С‚РµР»СЊ РІРїСЂР°РІРѕ, "
+							+ "<b color=\"red\">СЃС‚СЂРµР»РєСѓ РІРІРµСЂС…</b>, С‡С‚РѕР±С‹ РґРІРёРіР°С‚СЊ СѓРєР°Р·Р°С‚РµР»СЊ РІРІРµСЂС…, "
+							+ "Рё <b color=\"red\">СЃС‚СЂРµР»РєСѓ РІРЅРёР·</b>, С‡С‚РѕР±С‹ РґРІРёРіР°С‚СЊ СѓРєР°Р·Р°С‚РµР»СЊ РІРЅРёР·."
+							+ " Р§С‚РѕР±С‹ РІС‹РґРµР»РёС‚СЊ СЏС‡РµР№РєСѓ РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ С‚Р°РєР¶Рµ <b color=\"blue\">РєР»РёРєРЅСѓС‚СЊ"
+							+ " РїРѕ РЅРµР№ РјС‹С€СЊСЋ.</b></p>");
+					st.append("<p>Р”Р»СЏ РІС‹Р±РѕСЂР° С€Р°СЂРёРєР° РЅР°Р¶РјРёС‚Рµ <b color=\"red\">РїСЂРѕР±РµР»</b> Р»РёР±Рѕ <b color=\"blue\">РєР»РёРєРЅРёС‚Рµ РїРѕ РІС‹РґРµР»РµРЅРЅРѕР№ РєР»РµС‚РєРµ РјС‹С€СЊСЋ</b>.</p>");
+					st.append("<p>РџРѕСЃР»Рµ С‚РѕРіРѕ, РєР°Рє Р’С‹ РІС‹Р±СЂР°Р»Рё С€Р°СЂРёРє, РµРіРѕ РјРѕР¶РЅРѕ РїРµСЂРµРјРµСЃС‚РёС‚СЊ РЅР° РґСЂСѓРіСѓСЋ РїРѕР·РёС†РёСЋ, "
+							+ "РїСЂРё СЌС‚РѕРј:</p>");
+					st.append("<p>1. РџСЂРё РІС‹Р±РѕСЂРµ СЃРѕСЃРµРґРЅРµР№ РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё, РІРµСЂС‚РёРєР°Р»Рё Р»РёР±Рѕ РґРёР°РіРѕРЅР°Р»Рё РєР»РµС‚РєРµ С€Р°СЂРёРє "
+							+ "СЂР°Р·РјРЅРѕР¶Р°РµС‚СЃСЏ, С‚Рѕ РµСЃС‚СЊ РЅР° РІС‹Р±СЂР°РЅРЅРѕР№ РєР»РµС‚РєРµ СЃРѕР·РґР°РµС‚СЃСЏ РµС‰Рµ РѕРґРёРЅ С‚РѕР№ РєРѕРјР°РЅРґС‹, "
+							+ "РєРѕС‚РѕСЂР°СЏ РґРµР»Р°Р»Р° С…РѕРґ.</p>");
+					st.append("<p>2. РЁР°СЂРёРє РјРѕР¶РµС‚ РїРµСЂРµРїСЂС‹РіРЅСѓС‚СЊ С‡РµСЂРµР· 1 РєР»РµС‚РєСѓ РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё, РІРµСЂС‚РёРєР°Р»Рё Р»РёР±Рѕ"
+							+ " РґРёР°РіРѕРЅР°Р»Рё, Р»РёР±Рѕ РїРѕР№С‚Рё Р°РЅР°Р»РѕРіРёС‡РЅРѕ С…РѕРґСѓ РєРѕРЅСЏ РІ С€Р°С…РјР°С‚Р°С…, РѕРґРЅР°РєРѕ РїСЂРё "
+							+ "СЌС‚РѕРј СЂР°Р·РјРЅРѕР¶РµРЅРёРµ РїСЂРѕРёСЃС…РѕРґРёС‚СЊ РЅРµ Р±СѓРґРµС‚ - С€Р°СЂРёРє С‚РѕР»СЊРєРѕ РїРµСЂРµРјРµСЃС‚РёС‚СЃСЏ.</p>");
+					st.append("<p>3. РџРµСЂРµРјРµСЃС‚РёРІС€РёСЃСЊ, С€Р°СЂРёРє РѕР±СЂР°С‰Р°РµС‚ РІСЃРµ С€Р°СЂРёРєРё РґСЂСѓРіРѕРіРѕ С†РІРµС‚Р° РІРѕРєСЂСѓРі СЃРµР±СЏ,"
+							+ " С‚Рѕ РµСЃС‚СЊ РІСЃРµ С€Р°СЂРёРєРё РґСЂСѓРіРѕРіРѕ С†РІРµС‚Р° РЅР° 1 РєР»РµС‚РєСѓ РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё,"
+							+ " РІРµСЂС‚РёРєР°Р»Рё Р»РёР±Рѕ РґРёР°РіРѕРЅР°Р»Рё СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ С€Р°СЂРёРєР°РјРё С‚РѕР№ РєРѕРјР°РЅРґС‹,"
+							+ " РєРѕС‚РѕСЂР°СЏ СЃРѕРІРµСЂС€РёР»Р° С…РѕРґ.</p>");
+					st.append("<p>РРіСЂР° Р·Р°РєР°РЅС‡РёРІР°РµС‚СЃСЏ РІ С‚СЂРµС… СЃР»СѓС‡Р°СЏС…:</p>");
+					st.append("<p>1. Р’СЃРµ РєР»РµС‚РєРё РїРѕР»СЏ Р·Р°РЅСЏС‚С‹ С€Р°СЂРёРєР°РјРё.</p>");
+					st.append("<p>2. РќР° РїРѕР»Рµ РѕСЃС‚Р°Р»РёСЃСЊ С€Р°СЂРёРєРё С‚РѕР»СЊРєРѕ РѕРґРЅРѕРіРѕ РёРіСЂРѕРєР°.</p>");
+					st.append("<p>3. РџРѕС…РѕРґРёС‚СЊ РјРѕР¶РµС‚ С‚РѕР»СЊРєРѕ РѕРґРёРЅ РёРіСЂРѕРє.</p>");
+					st.append("<p>Р’С‹РёРіСЂС‹РІР°РµС‚ С‚РѕС‚, Сѓ РєРѕРіРѕ РІ РєРѕРЅС†Рµ РёРіСЂС‹ РѕСЃС‚Р°Р»РѕСЃСЊ Р±РѕР»СЊС€Рµ С€Р°СЂРёРєРѕРІ. РЈРґР°С‡РЅРѕР№ РёРіСЂС‹!</p></html>");
 					jf.setSize(500, 420);
 					jf.setIconImage(Toolkit.getDefaultToolkit().getImage("images/help.png"));
 					jf.add(new JLabel(st.toString()), BorderLayout.NORTH);
@@ -569,12 +569,12 @@ class Pole extends JFrame{
 		});
 		helper.addActionListener(new ActionListener(){
 			class Help{
-				JFrame jf = new JFrame("О программе");
+				JFrame jf = new JFrame("Рћ РїСЂРѕРіСЂР°РјРјРµ");
 				public Help(){
 					ImageIcon im = new ImageIcon("images/logo.png");
 					jf.setIconImage(Toolkit.getDefaultToolkit().getImage("images/about.png"));
 					jf.add(new JLabel(im), BorderLayout.WEST);
-					jf.add(new JLabel("<html><p>Игра сделана с помощью Eclipse Neon.2.<p><p>E-mail разработчика:</p><p>evgeniy.skorohodov@gmail.com</p></html>"), BorderLayout.EAST);
+					jf.add(new JLabel("<html><p>РРіСЂР° СЃРґРµР»Р°РЅР° СЃ РїРѕРјРѕС‰СЊСЋ Eclipse Neon.2.<p><p>E-mail СЂР°Р·СЂР°Р±РѕС‚С‡РёРєР°:</p><p>evgeniy.skorohodov@gmail.com</p></html>"), BorderLayout.EAST);
 					jf.setSize(520, 300);
 					jf.setLocationRelativeTo(null);
 					jf.setResizable(false);
@@ -760,16 +760,16 @@ class Pole extends JFrame{
 			g2d.drawString("Team " + (i+1) +":   "+ teams.get(i), XX, YY+YY*(i+1)/5 + sizeCell*pole.get(0).size());
 			g2d.drawOval(XX+100, YY*11/10 + YY*i/5 + sizeCell*pole.get(0).size(), 15, 15);
 		}
-		g2d.drawString("Ходов сделано:   " + turn, XX+sizeCell*pole.size()/2, YY*6/5+sizeCell*pole.get(0).size());
+		g2d.drawString("РҐРѕРґРѕРІ СЃРґРµР»Р°РЅРѕ:   " + turn, XX+sizeCell*pole.size()/2, YY*6/5+sizeCell*pole.get(0).size());
 		if (teamGo != 0){
-			g2d.drawString("Ходит: ", XX+sizeCell*pole.size()/2, YY*7/5+sizeCell*pole.get(0).size());
+			g2d.drawString("РҐРѕРґРёС‚: ", XX+sizeCell*pole.size()/2, YY*7/5+sizeCell*pole.get(0).size());
 			g2d.setColor(colors.get(teamGo-1));
 			g2d.fillOval(XX+sizeCell*pole.size()/2 + 75, YY*13/10 + sizeCell*pole.get(0).size(), 15, 15);
 			g2d.setColor(Color.BLACK);
 			g2d.drawOval(XX+sizeCell*pole.size()/2 + 75, YY*13/10 + sizeCell*pole.get(0).size(), 15, 15);
 		}
 		else{
-			g2d.drawString("Игра окончена!", XX+sizeCell*pole.size()/2, YY*7/5+sizeCell*pole.get(0).size());
+			g2d.drawString("РРіСЂР° РѕРєРѕРЅС‡РµРЅР°!", XX+sizeCell*pole.size()/2, YY*7/5+sizeCell*pole.get(0).size());
 		}
 	}
 	private void drawConst(Graphics2D g2d){
